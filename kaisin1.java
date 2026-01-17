@@ -13,6 +13,7 @@ public class kaisin1 {
     private JCheckBox shokukou;
     private JCheckBox konsin1, konsin2, konsin3;
     private JCheckBox kaihou1, kaihou2, kaihou3, kaihou4, kaihou5;
+    private JCheckBox renkei1, renkei2;
 
     private JLabel resultLabel;
 
@@ -59,9 +60,9 @@ public class kaisin1 {
         tyousen4 = new JCheckBox("挑戦者Lv4 +10%");
         tyousen5 = new JCheckBox("挑戦者Lv5 +15%");
 
-        muga1 = new JCheckBox("無我の境地Lv1 +18%");
-        muga2 = new JCheckBox("無我の境地Lv2 +21%");
-        muga3 = new JCheckBox("無我の境地Lv3 +25%");
+        muga1 = new JCheckBox("無我の境地Lv1 (克服込み) +18%");
+        muga2 = new JCheckBox("無我の境地Lv2 (克服込み) +21%");
+        muga3 = new JCheckBox("無我の境地Lv3 (克服込み) +25%");
 
         konsin1 = new JCheckBox("渾身Lv1 +10%");
         konsin2 = new JCheckBox("渾身Lv2 +20%");
@@ -73,8 +74,8 @@ public class kaisin1 {
         kaihou4 = new JCheckBox("力の解放Lv4 +40%");
         kaihou5 = new JCheckBox("力の解放Lv5 +50%");
 
-        
-
+        renkei1 = new JCheckBox("連携プログラムLv1 +15%");
+        renkei2 = new JCheckBox("連携プログラムLv2 +25%");
 
         shokukou = new JCheckBox("蝕攻の装衣 +30%");
 
@@ -174,6 +175,13 @@ public class kaisin1 {
         panel.add(kaihou5, gbc);
 
         gbc.gridx = 0;
+        gbc.gridy = 19;
+        panel.add(renkei1, gbc);
+
+        gbc.gridx = 1;
+        panel.add(renkei2, gbc);
+
+        gbc.gridx = 0;
         gbc.gridy = 12;
         gbc.gridwidth = 2;
         panel.add(shokukou, gbc);
@@ -217,6 +225,9 @@ public class kaisin1 {
                     if (source == kaihou1 || source == kaihou2 || source == kaihou3 || source == kaihou4 || source == kaihou5){
                         deselectOther(kaihou1, kaihou2, kaihou3, kaihou4, kaihou5);
                     }
+                    if (source == renkei1 || source == renkei2){
+                        deselectOther(renkei1, renkei2);
+                   }
 
                     // 会心率の更新
                     updatekaisin();
@@ -251,6 +262,8 @@ public class kaisin1 {
         kaihou3.addItemListener(listener);
         kaihou4.addItemListener(listener);
         kaihou5.addItemListener(listener);
+        renkei1.addItemListener(listener);
+        renkei2.addItemListener(listener);
 
         shokukou.addItemListener(listener);
 
@@ -299,6 +312,9 @@ public class kaisin1 {
         kaihou4.setSelected(false);
         kaihou5.setSelected(false);
 
+        renkei1.setSelected(false);
+        renkei2.setSelected(false);
+
         shokukou.setSelected(false);
 
         // 会心率のリセット
@@ -343,6 +359,9 @@ public class kaisin1 {
             if (kaihou3.isSelected()) totalCrit += 30;
             if (kaihou4.isSelected()) totalCrit += 40;
             if (kaihou5.isSelected()) totalCrit += 50;
+
+            if (renkei1.isSelected()) totalCrit += 15;
+            if (renkei2.isSelected()) totalCrit += 25;
 
 
             if (shokukou.isSelected()) totalCrit += 30;
