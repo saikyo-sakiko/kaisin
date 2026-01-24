@@ -208,25 +208,25 @@ public class kaisin1 {
                     JCheckBox source = (JCheckBox) e.getSource();
 
                     if (source == mikiri1 || source == mikiri2 || source == mikiri3 || source == mikiri4 || source == mikiri5) {
-                        deselectOther(mikiri1, mikiri2, mikiri3, mikiri4, mikiri5);
+                        deselectOther(source, mikiri1, mikiri2, mikiri3, mikiri4, mikiri5);
                     }
                     if (source == jakutoku1 || source == jakutoku2 || source == jakutoku3 || source == jakutoku4 || source == jakutoku5) {
-                        deselectOther(jakutoku1, jakutoku2, jakutoku3, jakutoku4, jakutoku5);
+                        deselectOther(source, jakutoku1, jakutoku2, jakutoku3, jakutoku4, jakutoku5);
                     }
                     if (source == tyousen1 || source == tyousen2 || source == tyousen3 || source == tyousen4 || source == tyousen5) {
-                        deselectOther(tyousen1, tyousen2, tyousen3, tyousen4, tyousen5);
+                        deselectOther(source, tyousen1, tyousen2, tyousen3, tyousen4, tyousen5);
                     }
                     if (source == muga1 || source == muga2 || source == muga3) {
-                        deselectOther(muga1, muga2, muga3);
+                        deselectOther(source, muga1, muga2, muga3);
                     }
                     if (source == konsin1 || source == konsin2 || source == konsin3) {
-                        deselectOther(konsin1, konsin2, konsin3);
+                        deselectOther(source, konsin1, konsin2, konsin3);
                     }
                     if (source == kaihou1 || source == kaihou2 || source == kaihou3 || source == kaihou4 || source == kaihou5){
-                        deselectOther(kaihou1, kaihou2, kaihou3, kaihou4, kaihou5);
+                        deselectOther(source, kaihou1, kaihou2, kaihou3, kaihou4, kaihou5);
                     }
                     if (source == renkei1 || source == renkei2){
-                        deselectOther(renkei1, renkei2);
+                        deselectOther(source, renkei1, renkei2);
                    }
 
                     // 会心率の更新
@@ -270,9 +270,12 @@ public class kaisin1 {
         frame.setVisible(true);
     }
 
-    private void deselectOther(JCheckBox... checkboxes) {
-        for (JCheckBox cb : checkboxes) {
-            if (!cb.isSelected()) {
+    private void deselectOther(JCheckBox selected, JCheckBox... group) {
+        if (!selected.isSelected()) {
+            return;
+        }
+        for (JCheckBox cb : group) {
+            if (cb != selected) {
                 cb.setSelected(false);
             }
         }
