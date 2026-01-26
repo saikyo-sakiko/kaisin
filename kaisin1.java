@@ -1,9 +1,11 @@
+package com.example.kaisin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class kaisin1 {
-    private JFrame frame;
+public class App {
+	private JFrame frame;
     private JTextField bukikaisin;
 
     private JCheckBox mikiri1, mikiri2, mikiri3, mikiri4, mikiri5;
@@ -17,7 +19,7 @@ public class kaisin1 {
 
     private JLabel resultLabel;
 
-    public kaisin1() {
+    public App() {
         // フレーム作成
         frame = new JFrame("ワイルズ会心率計算");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,10 +76,10 @@ public class kaisin1 {
         kaihou4 = new JCheckBox("力の解放Lv4 +40%");
         kaihou5 = new JCheckBox("力の解放Lv5 +50%");
 
-        renkei1 = new JCheckBox("連携プログラムLv1 +15%");
-        renkei2 = new JCheckBox("連携プログラムLv2 +25%");
+        renkei1 = new JCheckBox("連携プログラム +15%");
+        renkei2 = new JCheckBox("連携プログラム(+ レゾナンスⅡ) +25%");
 
-        shokukou = new JCheckBox("蝕攻の装衣 +30%");
+        shokukou = new JCheckBox("蝕攻の装衣 +10%");
 
         // 各スキルをパネルに追加
         gbc.gridx = 0;
@@ -367,7 +369,7 @@ public class kaisin1 {
             if (renkei2.isSelected()) totalCrit += 25;
 
 
-            if (shokukou.isSelected()) totalCrit += 30;
+            if (shokukou.isSelected()) totalCrit += 10;
 
             totalCrit = Math.min(totalCrit, 200); // 上限200%
 
@@ -378,6 +380,6 @@ public class kaisin1 {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(kaisin1::new);
+        SwingUtilities.invokeLater(App::new);
     }
 }
